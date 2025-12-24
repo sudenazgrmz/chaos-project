@@ -44,18 +44,18 @@ Client → Backend → Classifier
 * YAML-based manifests
 
  Chaos Engineering Experiments
-All chaos experiments target the classifier service and are defined under the chaos-experiments/ directory.Each experiment is supported by execution screenshots stored under screenshots/.
+All chaos experiments target the classifier service and are defined under the chaos-experiments/ directory. Each experiment is supported by execution screenshots stored under screenshots/.
 
  Experiment 1 – Baseline (No Chaos)
  screenshots/01_baseline/
-Purpose:Establish normal system behavior before injecting chaos.
+Purpose: Establish normal system behavior before injecting chaos.
 Evidence:
 * Running pods
 * Successful curl request
 * Backend logs
 
  Experiment 2 – Network Delay (NetworkChaos)
- screenshots/02_network_delay/ network-delay-classifier.yaml network-delay-backend-to-classifier.yaml
+ screenshots/02_network_delay/  network-delay-classifier.yaml  network-delay-backend-to-classifier.yaml
 Description:
 * Artificial latency injected between services
 * Communication continues with increased delay
@@ -65,7 +65,7 @@ Observed Result:
 * No timeout occurs under configured delay
 
  Experiment 3 – HTTP Chaos (HTTPChaos)
- screenshots/03_http_chaos/ http-chaos-classifier.yaml
+ screenshots/03_http_chaos/  http-chaos-classifier.yaml
 Description:
 * HTTP request aborts injected into classifier
 * Experiment revealed runtime incompatibility between HTTPChaos and Docker-based container runtime
@@ -76,7 +76,7 @@ Observed Result:
 This experiment demonstrates important real-world constraints of chaos tooling.
 
  Experiment 4 – CPU Stress (StressChaos)
- screenshots/04_stress_chaos/ stress-cpu-classifier.yaml
+ screenshots/04_stress_chaos/  stress-cpu-classifier.yaml
 Description:
 * CPU load forced to 100% on classifier pod
 * Service remains running but under heavy load
@@ -86,7 +86,7 @@ Observed Result:
 * Demonstrates graceful degradation under resource pressure
 
  Experiment 5 – Pod Kill (PodChaos)
- screenshots/05_pod_kill/ pod-kill-classifier.yaml
+ screenshots/05_pod_kill/  pod-kill-classifier.yaml
 Description:
 * Classifier pod deliberately terminated
 * Kubernetes automatically recreates the pod
@@ -104,7 +104,7 @@ Observed Result:
 * NetworkChaos and PodChaos active at the same time
 * Classifier pod recreated successfully
 * System remains operational
-Note:Due to limitations in the installed Chaos Mesh Workflow CRD, a native workflow experiment could not be applied.Instead, a manual composite chaos scenario was executed, which provides equivalent analytical value.
+Note: Due to limitations in the installed Chaos Mesh Workflow CRD, a native workflow experiment could not be applied. Instead, a manual composite chaos scenario was executed, which provides equivalent analytical value.
 
  Project Structure
 chaos-mesh-demo/
@@ -137,4 +137,5 @@ chaos-mesh-demo/
 This project successfully demonstrates how Chaos Engineering can be applied to a Kubernetes-based microservice system.
 By injecting controlled failures using Chaos Mesh and documenting real execution results, the system’s resilience, recovery behavior, and limitations were analyzed in a practical and transparent manner.
 The repository provides a reproducible, evidence-based chaos engineering study, aligned with academic and industry practices.
+
 
