@@ -1,0 +1,20 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: NetworkChaos
+metadata:
+  name: delay-backend-to-classifier
+spec:
+  action: delay
+  mode: one
+  selector:
+    labelSelectors:
+      app: classifier
+  delay:
+    latency: "5s"
+    correlation: "100"
+    jitter: "0ms"
+  direction: to
+  target:
+    selector:
+      labelSelectors:
+        app: chaos-backend
+    mode: one

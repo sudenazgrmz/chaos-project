@@ -1,0 +1,18 @@
+apiVersion: chaos-mesh.org/v1alpha1
+kind: HTTPChaos
+metadata:
+  name: http-abort-classifier
+  namespace: default
+spec:
+  mode: fixed-percent
+  value: "50"
+  selector:
+    namespaces:
+      - default
+    labelSelectors:
+      app: classifier
+  target: Request
+  port: 5002
+  method: POST
+  path: "/classify"
+  abort: true
